@@ -1,0 +1,34 @@
+
+https://github.com/avamsykiran/Java8AndSpring_Feb24Mar04_16301830.git
+
+Spring
+---------------------------------
+
+    Java Development Platform
+
+        + Modular
+            Spring Core             Dependency Injection
+            Spring Context          ApplicationContext      lightweight Container
+            Spring SpEL             Spring expression Languege
+            Spring Web              WebMVC and REST API
+            Spring AOP              Aspect Oriented Programming
+            Spring JDBC             JdbcTemplate
+            Spring ORM              Object relational mapping  
+            Spring Data             Autoized repository provider
+            Spring Data REST        Autoized repository and rest api provider    
+            Spring Test             Testing library for Spring Modules
+            Spring Security         Security Provider
+            Spring Boot             Auto Configuarations
+                ....etc
+
+        + Interaparable
+
+AGENDA
+----------------------------------------------------------------------------------
+            Spring Core             Dependency Injection
+            Spring Context          ApplicationContext      lightweight Container
+            Spring SpEL             Spring expression Languege
+            Spring Web              WebMVC and REST API
+            Spring Data             Autoized repository provider
+            Spring Boot             RAD -Rapid Application Development
+                                     through Auto Configuarations
