@@ -1,4 +1,6 @@
 
+https://github.com/avamsykiran/Java8AndSpring_Feb24Mar04_16301830.git
+
 JDK8
 --------------------------------
 
@@ -103,20 +105,94 @@ JDK8
 
             A stream is a replacement for a loop.
 
-                forEach(Consumer)           Terminal Operator
-                filter(Predicate)           Intermideate Operator
-                collect(Collector)          Terminal Operator
+                forEach(Consumer)           Terminal Operator                
+                reduce(BinaryOperator)      Terminal Operator
+                collect(Collector)         
+                
 
                             Collectors.toList();
                             Collectors.toSet();
                             Collectors.toMap();
+                
+                filter(Predicate)           Intermideate Operator
+                map(transformer)            Intermideate Operator                    
+                flatMap(transformer)        Intermideate Operator   
 
-                map(transformer)            Intermideate Operator         
-                flatMap(transformer)        Intermideate Operator         
 
-    Date Tiem API
+                int[] ar = {1,2,3,4,5};
+
+                Stream.of(ar).reduce((e1,e2) -> e1+e2); ((1+2)+3)+4)+5)
+
+                    loop            stream          parellelStream
+                    ================================================
+
+small dataset       out performes   optimal
+large dataset                       optimal          out performes
+
+
+Maintability                        better           better   
+Readability                         better           better   
+
+
+    Date and Tiem API
     ---------------------------------------------
         java.time
+
+                LocalDate
+                LocalTime
+                LocalDateTime
+                                factory methods
+                                --------------------
+                                .now()
+                                .of(yr,mon,day,hour,min,sec);
+                               
+                                instacne methods
+                                ------------------- 
+                                getField
+                                plusField
+                                minusField
+                                isAFter
+                                isBefore
+                                compareTo
+                                equals
+
+                ZonedDate
+                ZonedTime
+                ZonedDateTime
+                                .now(ZoneId)
+                                
+                                instacne methods
+                                ------------------- 
+                                getField
+                                plusField
+                                minusField
+                                isAFter
+                                isBefore
+                                compareTo
+                                equals
+
+                ZoneId
+                                .of("GMT+5")
+
+                DateTimeFormatter
+                                .ofPattern("")
+
+                                d,dd            day
+                                M,MM,MMM,MMMM   month
+                                yy,yyyy         year
+
+                                h,hh            12 hr Hour
+                                H,HH            24 hr Hour    
+                                m,mm            min
+                                s,ss            sec
+                                a               am/pm
+
+                Period
+                                .between(Start,end);    in terms of m=years,month and days
+                
+                Duration
+                                .between(start,end);    in terms of days,hours and mins
+                                    
 
 
 
