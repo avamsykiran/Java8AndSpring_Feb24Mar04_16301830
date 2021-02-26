@@ -1,2 +1,131 @@
-https://github.com/avamsykiran/Microservices_Feb24Mar04_16301830.git
+
+JDK8
+--------------------------------
+
+    default and static method in interfaces
+
+            interface Shape {
+                int getPerimeter();
+                int getArea();
+                default int getVolume(){
+                    return 0;
+                }
+            }
+
+            class Rectangle implements Shape{
+                int getPerimeter(){
+                    ....
+                }
+                int getArea(){
+                    ....
+                }
+            }
+
+            class Circle implements Shape{
+                int getPerimeter(){
+                    ....
+                }
+                int getArea(){
+                    ....
+                }
+            }
+
+            class Cone implements Shape{
+                int getPerimeter(){
+                    ....
+                }
+                int getArea(){
+                    ....
+                }
+                int getVolume(){
+                    ...
+                }
+            }
+
+            
+            class Cylinder implements Shape{
+                int getPerimeter(){
+                    ....
+                }
+                int getArea(){
+                    ....
+                }
+                int getVolume(){
+                    ...
+                }
+            }
+
+    Functional Interfaces
+    ------------------------------------------
+    
+        an interface having only one abstract method is
+        called a functional interface.
+
+        @FunctionalInterface
+        interface MyInterface{
+            String greet(Stirng username);            
+        }
+
+        Suppliers           returns a value but has no args
+        Consumers           does not return a value but has args
+        Predicates          always returns boolean irrespective of having args or not.
+        Operators           returns a value other than boolean and also has args
+    
+        package java.util.function
+
+    Lambda Expressions
+    ------------------------------------------
+
+        MyInterface intrObj = (unm) -> {
+            return "Hello "+unm;
+        };
+
+        intrObj.greet("Vamsy");
+
+        MyInterface intrObj2 = (unm) -> ("Hai "+unm) ;
+        intrObj2.greet("Vamsy");
+
+    Streams API
+    -----------------------------------------------
+            
+        java.util.stream.Stream
+        java.util.stream.ParellelStream
+
+            a flow of data from a data source, 
+            data source can be an array or a collection or a map
+
+
+            Stream<Employee> semp = Stream.of(new Employee[] {});
+            ParellelStream<Employee> psemp = ParellelStream.of(new Employee[] {});
+
+            Stream<Employee> semp = empList.stream();
+            ParellelStream<Employee> psemp = empList.parellelStream();
+
+            A stream is a replacement for a loop.
+
+                forEach(Consumer)           Terminal Operator
+                filter(Predicate)           Intermideate Operator
+                collect(Collector)          Terminal Operator
+
+                            Collectors.toList();
+                            Collectors.toSet();
+                            Collectors.toMap();
+
+                map(transformer)            Intermideate Operator         
+                flatMap(transformer)        Intermideate Operator         
+
+    Date Tiem API
+    ---------------------------------------------
+        java.time
+
+
+
+
+
+
+
+
+
+
+
 
