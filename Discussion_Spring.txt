@@ -32,3 +32,160 @@ AGENDA
             Spring Data             Autoized repository provider
             Spring Boot             RAD -Rapid Application Development
                                      through Auto Configuarations
+
+Spring IoC
+------------------------------------------------------------------------------------
+
+        DB   [ dao <----> Service <-----> UI ]  END User
+        
+            EmployeeDao             interface
+            EmployeeDaoJdbcImpl     implementation class
+            EmployeeDaoOrmImpl      implementation class
+
+            EmployeeService         interface
+            EmployeeServiceImpl     implementation class
+
+            class EmployeeServiceImpl implements EmployeeService {
+                
+                //EmployeeDao dao = new EmployeeDaoJdbcImpl();
+                EmployeeDao dao = new EmployeeDaoOrmImpl();
+                ......................
+            }            
+            
+        Inversion of control  achive DI (Dependency Injection)
+
+            class EmployeeServiceImpl implements EmployeeService {
+                EmployeeDao dao;
+
+                public EmployeeServiceImpl(EmployeeDao dao){
+                    this.dao=dao;
+                }    
+
+                public void setDao(EmployeeDao dao){
+                    this.dao=dao;
+                }
+                ......................
+            }        
+
+
+            new EmployeeServiceImpl(new EmployeeDaoJdbcImpl());
+            new EmployeeServiceImpl(new EmployeeDaoOrmImpl()); //injection by constructor
+
+            Dependency Injection
+                    Constructor Injection
+                    Setter Injection
+                    Field  Injection
+                    Method Injection
+
+
+        Bean Manager - Container
+                            is a piece of software that can 
+                                    create, supply and destroy the objects
+                                    of components (beans) in the application.    
+
+        Spring Core         BeanFactory
+        Spring Context      ApplicationContext
+        
+                                Configure the beans
+                                    1. tell how many beans are needed in an application
+                                    2. which bean depends on which other bean
+
+
+                                How do we Configure?
+                                        XML based configuaration
+                                        Annotation based configuaration
+
+                                            @Configuaration
+                                            @ComponentScan("packageName")
+                                            public class MyConfig {
+
+                                            }
+
+                                            @Component
+                                            public class MyService1{    //myService1
+                                                
+                                            }    
+
+                                            @Component
+                                            public class MyService2{    //myService2
+                                                
+                                            }    
+
+                                            @Component("ms3")
+                                            public class MyService3{    //ms3
+                                                
+                                            }    
+
+                                            @Component
+                                                @Service
+                                                @Resource
+                                                @Respository
+                                                @Controller
+                                                @RestController
+                                                @ControllerADvice
+                                                @RestControllerAdvice
+                                                ..etc
+
+                                            @Value('spel') 
+                                               injecting a external value 
+                                                        into a field
+
+                                                spel
+                                                            ${propertyKey}
+                                                            #{gs.prop1}
+
+                                            @Autowired
+                                                    for injection one bean into antoehr
+
+                                                @Autowired
+                                                private MyDao dao;      //Field Injection
+
+                                                @Autowired
+                                                public MyBlahFee(MyOtherFoo f){  //constructor injection
+
+                                                }    
+
+                                                @Autowired
+                                                public void setFoo(Foo f){  //Setter Injection
+
+                                                }
+
+
+                                            @Autoized
+                                                    default happen by type
+
+                                                    but if byType conflicts,
+
+                                                            1. byName
+                                                                    @Qualifier
+                                                            2. byType
+                                                                    @Primary
+
+                                            @Scope("")
+
+                                                singleton      default     
+                                                protoytpe
+                                                                WebApplictionContext
+                                                request
+                                                session
+                                                global-session
+
+
+                                        Java Based Configuaration
+
+                                            @Configuaration                                            
+                                            public class MyConfig {
+
+                                                @Bean        
+                                                public Random random(){   //random
+                                                    return new Random();
+                                                }        
+                                            }
+
+
+
+
+
+
+
+
