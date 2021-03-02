@@ -67,7 +67,6 @@ Spring IoC
                 ......................
             }        
 
-
             new EmployeeServiceImpl(new EmployeeDaoJdbcImpl());
             new EmployeeServiceImpl(new EmployeeDaoOrmImpl()); //injection by constructor
 
@@ -181,6 +180,75 @@ Spring IoC
                                                     return new Random();
                                                 }        
                                             }
+
+    Spring Web 
+    -------------------------------------------------
+
+        SingleFronController Design Pattern
+                                                Controller1   <---> Service1  <---> DAO1  
+        EndUser ---REQ---> FrontController ---> Controller2   <---> Service2  <---> DAO2
+                                                Controller3   <---> Service3  <---> DAO3
+                                                    |
+                                                    | (model)
+                                                    |
+                 <-----Response------           View 1
+                                                View 2
+                                                View 3
+
+        FrontController?
+                            config DispatcherServlet to receive all request (/**)
+
+        Controller?
+
+                            is any class that is marked with @Controller
+
+                            a controller is expected to have methods
+                                - that return a view name
+                                - or a model and a view name.
+
+        How can a DispatcherServlet (FrontController) know
+        which request is handled by which controller?
+        ---------------------------------------------------------    
+
+                DispatcherServlet depends on UrlHandler.
+                Many implementations of UrlHandler.
+
+                SimpleUrlHandler is a common and msot used UrlHandler
+                that is default available.
+
+                it expects that each method in the controller class
+                is marked with @RequestMapping(url,httpMethod)
+
+
+        Once the method in controller returns a viewName
+        how to identify the view (page) related to the givne viewName?
+        -------------------------------------------------------------------
+
+            DispatcherServlet depends on ViewResolver.
+
+            ViewResolver
+                    BeanResourceViewResolver
+                    XmlResourceViewResolver
+                    InternalResourceViewResolver
+
+            InternalResourceViewResolver                    
+
+                    set the properties prefix and suffix.
+
+                    actualView = prefix + viewName + suffix;
+
+    @ReqeustMapping(url,method=RequestMethod.GET)
+    @GetMapping(url)
+
+    @ReqeustMapping(url,method=RequestMethod.POST)
+    @PostMapping(url)
+
+    @RequestParam("unm")           reqeust.getParameter("unm")
+
+    @ModelAttribute
+                        is used map the form fields 
+                        witht he properties of a model
+                        provided the names match.
 
 
 
