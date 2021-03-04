@@ -250,6 +250,31 @@ Spring IoC
                         witht he properties of a model
                         provided the names match.
 
+    Spring Boot
+    ===============================================
+
+            RAD     Rapid Application Development.
+
+
+            by automating a lot of configuaration.
+
+            embeded server
+
+
+    Spring Rest
+    =================================================
+
+        @RestController
+
+        @RequestMapping
+        @GetMapping
+        @PostMapping
+        @PutMapping
+        @DeleteMapping
+
+
+
+
 
 
 
